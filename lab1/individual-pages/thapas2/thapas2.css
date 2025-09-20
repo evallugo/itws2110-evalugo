@@ -1,0 +1,285 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background-color: #1e1e1e;
+    color: #f2f2f2;
+
+    line-height: 1.6;
+    
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    position: relative;
+    height: 150vh;
+}
+
+
+body::before{
+    content: "";
+    position: fixed; /*puts image onto viewport*/
+    inset: 0;   /*stretches image*/
+    background: url("../../resources/space.jpg") center/cover no-repeat; 
+    opacity: 0.15;  /*fade image sligtly so that only the stars are barely showing*/
+    z-index: -1;    /*ensure image is behind content*/
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 1rem;
+    background-color: rgb(26, 26, 26);
+    box-shadow: 0px 1px 50px 1px rgb(158, 157, 157);
+}
+
+.picture{
+    display: flex;
+    justify-content: right;
+    height: 100%;
+}
+
+
+.logo {
+    display: flex;
+    height: 100%;
+}
+
+
+.logo img, .picture img{
+    width: 15vw;
+    
+    object-fit: contain;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+    
+}
+
+.nav-links li {
+    cursor: pointer;
+    color: #b3b3b3;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    transition: color 0.3s ease;
+}
+
+.nav-links li:hover {
+    color: #ffffff;
+}
+
+.title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 100px;
+}
+
+.title h1{
+    font-size: 2.2rem; 
+    font-weight: 600;
+    filter: drop-shadow(0px 0px 10px white);
+}
+
+.aboutContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 50px; 
+    filter: drop-shadow(0px 0px 50px white);
+}
+
+.aboutText{
+    max-width: 700px;
+}
+
+.aboutContainer h1 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    font-weight: 100;
+}
+
+.aboutContainer p {
+    font-size: 1.1rem;
+    color: #dcdcdc;
+    margin-bottom: 1rem;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.centerContainer{
+    display: flex; 
+    justify-content: center;
+    margin-top: 0;
+}
+
+.resumeContainer{
+    width: 95vw;
+    height: auto;
+    margin-top: 0px; 
+    padding-bottom: 100px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1s ease, transform 1s ease;
+    font-family: 'Times New Roman', 'sans-serif';
+}
+
+.resumeContainer.visible{
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/*Name Header*/
+.resumeContainer h1{
+    text-align: center;
+    margin: 0;
+    font-variant: small-caps;
+    font-size: 1.5em;
+    border-bottom: 3px solid white;
+}
+
+/*Objective*/
+.resumeContainer h2{
+    font-size: 1em;
+    text-align: left;
+    margin-bottom: 0px;
+    margin-top: 10px;
+    padding-left: 20px;
+}
+
+/*Education*/
+.resumeContainer h3{
+    font-size: 1em;
+    text-align: left;
+    margin-bottom: 0px;
+    margin-top: 10px;
+    padding-left: 20px;
+}
+
+/*Coursework*/
+.resumeContainer h4{
+    font-size: 1em;
+    text-align: left;
+    margin-bottom: 0px;
+    margin-top: 10px;
+    padding-left: 20px;
+
+}
+
+/*Skills*/
+.resumeContainer h5{
+    font-size: 1em;
+    text-align: left;
+    margin-bottom: 0px;
+    margin-top: 10px;
+    padding-left: 20px;
+}
+
+/*Experience*/
+.resumeContainer h6{
+    font-size: 1em;
+    text-align: left;
+    margin-bottom: 0px;
+    margin-top: 10px;
+    padding-left: 20px;
+}
+
+#contactInfo {
+    padding: 5px 0 5px 0;
+    margin: 0;
+    text-align: center;
+    border-bottom: 3px solid white;
+    font-size: .9em;
+}
+
+#objectiveContent{
+    font-size: .8em;
+    padding: 10px 0px 0px 10px;
+    border-top: 1px solid white; 
+    margin-top: 5px; 
+    margin-bottom: 0px;
+    list-style-type: none; /*no bullet points*/
+}
+
+#educationContainer{
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: space-between;
+
+    font-size: .8em;
+    padding: 10px 0px 0px 40px;
+    border-top: 1px solid white;
+    margin-top: 5px;
+    margin-bottom: 0px
+}
+
+.education-entry{ 
+    flex: 0.5;
+    text-align: left;
+}
+
+.school{
+    font-weight: bold;
+}
+
+.location{
+    font-weight: normal;
+}
+
+.degree, .date{
+    margin-top: 5px;
+}
+
+ #courseworkContent{
+    font-size: .8em;
+    padding: 10px 0px 0px 40px;
+    border-top: 1px solid white;
+    margin-top: 5px;
+    margin-bottom: 0px;
+    list-style-type: none;
+}
+
+#skillsContent{
+    font-size: .8em;
+    padding: 10px 0px 0px 40px;
+    border-top: 1px solid white;
+    margin-top: 5px;
+    margin-bottom: 0px;
+}
+
+#experienceContent{
+    font-size: .8em;
+    padding: 10px 0px 0px 40px;
+    border-top: 1px solid white;
+    margin-top: 5px;
+    list-style-type: none;
+}
+
+/*Align card content in order to line up with the resume style*/
+.vcard{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 0;
+    margin-top: 100px;
+}
+
+/*smooth scroll to the resume section*/
+html{
+    scroll-behavior: smooth;
+}

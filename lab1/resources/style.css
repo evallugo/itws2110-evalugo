@@ -1,0 +1,160 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    height: 230em;
+}
+
+body {
+    background-size: 100% 100%;
+    background-position: top;
+    background-repeat: no-repeat;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background-color: #1e1e1e;
+    color: #f2f2f2;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    position: relative;
+    height: 120vh;
+}
+
+body::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url("space.jpg") center/cover no-repeat;
+    opacity: 0.15;
+    z-index: -1;
+}
+
+.navbar {
+    z-index: 2;
+    position: fixed;
+    top:0px;
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 1rem;
+    background-color: rgb(26, 26, 26);
+    box-shadow: 0px 1px 50px 1px rgb(158, 157, 157);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    width: auto;
+    height: 100%;
+}
+
+.logo img {
+    display: block;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+    
+}
+
+.nav-links li {
+    cursor: pointer;
+    color: #b3b3b3;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    transition: color 0.3s ease;
+}
+
+.nav-links li:hover {
+    color: #ffffff;
+}
+
+.main-content {
+    top: 50em;
+    flex: 1;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: auto;
+}
+
+.main-content h1 {
+    z-index: 1;
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    filter: drop-shadow(0px 0px 10px rgb(231, 230, 230))
+}
+
+.main-content p {
+    font-size: 1.1rem;
+    color: #dcdcdc;
+    margin-bottom: 1rem;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+#projects {
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;    display: flex;
+    flex-flow: inherit;
+    position: relative;
+    align-self: center;
+    border-radius: 10px;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    top: 100%;
+    padding: 20px;
+}
+
+#projects h1 {
+    font-size: 2em;
+}
+
+#projects li {
+    padding: 10px;
+}
+
+
+#previous-works {
+    font-size: 2em;
+    list-style: none;
+    padding-top: 50px;
+    margin-left: 5%;
+    position: relative;
+}
+
+.sublist-works {
+    list-style: none;
+    font-size: .7em;
+    font-weight: light;
+    margin-left: 5%;
+
+
+}
+    .sublist-works li {
+        font-weight: lighter;
+    }
+
+#hydrothermal{
+    height: auto;
+    width: 10em;
+    position: inherit;
+    margin-left: 2em;
+}
+
+#satellite-ui {
+    height: auto;
+    width: 20em;
+}

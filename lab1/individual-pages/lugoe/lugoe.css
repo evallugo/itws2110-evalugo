@@ -1,0 +1,293 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 1.4vw;
+}
+
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background-color: #1e1e1e;
+    color: #f2f2f2;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    position: relative;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url("../../resources/space.jpg") center/cover no-repeat;
+    opacity: 0.15;
+    z-index: -1;
+}
+
+.navbar {
+    z-index: 2;
+    position: fixed;
+    top: 0px;
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 1rem;
+    background-color: rgb(26, 26, 26);
+    box-shadow: 0px 1px 50px 1px rgb(158, 157, 157);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    width: auto;
+    height: 100%;
+}
+
+.logo img {
+    display: block;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+}
+
+.nav-links li {
+    cursor: pointer;
+    color: #b3b3b3;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    transition: color 0.3s ease;
+}
+
+.nav-links li:hover {
+    color: #ffffff;
+}
+
+.main-content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    margin: auto;
+}
+
+.main-content h1 {
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+}
+
+.main-content p {
+    font-size: 1.1rem;
+    color: #dcdcdc;
+    margin-bottom: 1rem;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+#projects {
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    display: flex;
+    flex-flow: inherit;
+    position: absolute;
+    align-self: center;
+    border-radius: 10px;
+    top: 100%;
+    padding: 20px;
+}
+
+#projects h1 {
+    font-size: 2em;
+}
+
+#projects li {
+    padding: 10px;
+}
+
+#previous-works {
+    font-size: 2em;
+    list-style: none;
+    padding-top: 50px;
+    margin-left: 5%;
+    position: relative;
+}
+
+.sublist-works {
+    list-style: none;
+    font-size: .7em;
+    font-weight: light;
+    margin-left: 5%;
+}
+
+.sublist-works li {
+    font-weight: lighter;
+}
+
+#hydrothermal {
+    height: auto;
+    width: 10em;
+    position: inherit;
+    margin-left: 2em;
+}
+
+#satellite-ui {
+    height: auto;
+    width: 20em;
+}
+
+.paper {
+    background-color: white;
+    color: black;
+    font-family: 'Times New Roman', Times, serif;
+    width: 95%;
+    max-width: 75%;
+    margin: 75px auto;
+    padding: 6%;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+    line-height: 1.1;
+    aspect-ratio: 1 / 1.414;
+}
+
+.paper h1 {
+    text-align: center;
+    padding: 2rem 0;
+    margin-bottom: 0;
+    font-variant: small-caps;
+    color: hotpink;
+    font-size: 2.2rem;
+}
+
+.paper #contactInfo {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 1rem;
+}
+
+.paper #contactInfo a {
+    color: black;
+    text-decoration: none;
+}
+
+.paper .section {
+    margin-bottom: 2rem;
+}
+
+.paper .section-title {
+    font-weight: bold;
+    font-size: 1.2rem;
+    border-bottom: 2px solid black;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.paper .subsection {
+    margin-bottom: 1rem;
+}
+
+.paper .dates {
+    float: right;
+    font-style: italic;
+    font-size: 0.9rem;
+}
+
+.paper ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.paper ul li {
+    margin-bottom: 0.5rem;
+    position: relative;
+    left: 1.5rem;
+}
+
+.paper .indented {
+    font-style: italic;
+    font-size: 1rem;
+}
+
+.paper .indented::before {
+    content: "•";
+    position: absolute;
+    left: -1.5rem;
+    font-style: normal;
+}
+
+.paper strong {
+    font-size: 1rem;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+}
+
+.home-button {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.8rem 1.5rem;
+    background-color: white;
+    color: #1e1e1e;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.home-button:hover {
+    background-color: #dcdcdcbb;
+    color: black;
+}
+
+.about-me-section {
+    display: flex;
+    align-items: center; 
+    gap: 3rem; 
+    max-width: 75%; 
+    margin: 75px auto 40px auto; 
+    padding: 20px;
+    background-color: rgb(26, 26, 26); 
+    border-radius: 10px;
+    box-shadow: 0px 1px 50px 1px rgb(158, 157, 157);
+}
+
+.profile-picture img {
+    width: 200px; 
+    height: 200px; 
+    border-radius: 50%; 
+    object-fit: cover; 
+    border: 3px solid #f2f2f2; 
+}
+
+.bio-text {
+    flex: 1;
+}
+
+.bio-text h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #f2f2f2; 
+    text-align: left; 
+    filter: drop-shadow(0px 0px 8px rgb(231, 230, 230)); 
+}
+
+.bio-text p {
+    font-size: 1.1rem;
+    color: #dcdcdc; 
+    line-height: 1.8;
+}

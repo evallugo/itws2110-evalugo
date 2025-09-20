@@ -1,0 +1,51 @@
+* {
+    font-family: "Roboto Condensed";
+}
+
+html {
+    height: fit-content;
+}
+
+body {
+    padding-left: 30%;
+    padding-right: 30%;
+}
+
+#name {
+    text-align: center;
+    text-decoration: none;
+    
+}
+
+#contactInfo {
+
+    text-align: center;
+    padding: 5px 0;
+
+}
+
+    #contactInfo li {
+        display: inline;
+        margin: 0 0.30em;
+    }
+
+#profile li {
+    padding: 4px;
+    padding-bottom: 1em;
+}
+
+.bigsection {
+    border-top: 2px solid;
+}
+
+.sublist {
+    list-style: none;
+    padding: 0;
+}
+
+    .sublist ul {
+        list-style: none;
+        margin-left: 1em;
+        padding-bottom: 1.2em;
+        padding-top: .8em;
+    }
