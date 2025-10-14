@@ -1,5 +1,7 @@
 Web Systems Lab 3:
 
+link to lab website: https://evallugo.github.io/itws2110-evalugo/
+
 Sources:
 * https://openweathermap.org/api
 * https://v2.jokeapi.dev/
