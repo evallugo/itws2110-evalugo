@@ -1,5 +1,5 @@
 const OPENWEATHER_API_KEY = "e5b777ef2c116a5f495f2d2f19e18256"; 
-const FINNHUB_API_KEY = "e5b777ef2c116a5f495f2d2f19e18256"; 
+const FINNHUB_API_KEY = "d3mpekpr01qmso34t6n0d3mpekpr01qmso34t6ng"; 
 const TROY_ID = "5140604";
 
 const STOCK_SYMBOL = "AAPL";
