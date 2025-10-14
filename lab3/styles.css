@@ -1,29 +1,66 @@
 body {
-    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-    color: white; 
+    margin: 0;
+    font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: linear-gradient(160deg, #4A90E2 0%, #4f6672 50%, #B8E4FF 100%);
+    color: white;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; 
+    animation: fadeIn 1s ease-in-out; 
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 .custom-card {
     width: 90%;
-    max-width: 400px;
-    border-radius: 25px;
-    background-color: rgba(255, 255, 255, 0.2); 
-    backdrop-filter: blur(10px); 
-        border: none; 
+    max-width: 420px;
+    border-radius: 35px; 
+    
+    background-color: rgba(255, 255, 255, 0.35);
+    backdrop-filter: blur(30px) saturate(200%);
+    -webkit-backdrop-filter: blur(30px) saturate(200%);
+    
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    padding: 2.2rem;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2); 
+    
     color: white; 
+    text-align: left; 
 }
 
 #city-name {
-    font-size: 2.5rem;
+    font-size: 2.5rem; 
+    font-weight: 600;
+    line-height: 1;
+    margin-bottom: 0.2rem;
 }
 
 #description {
-    text-transform: capitalize;
     font-size: 1.1rem;
+    font-weight: 300;
+    text-transform: capitalize;
+    opacity: 0.9;
+    margin-bottom: 0;
+}
+
+.temp-icon-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1.5rem 0;
 }
 
 #temperature {
-    font-size: 5.5rem !important; 
+    font-size: 5.5rem; 
+    font-weight: 200; 
+    line-height: 0.9;
+    margin: 0;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
 .weather-icon-lg {
@@ -32,6 +69,28 @@ body {
 }
 
 .custom-card hr {
-    border-top: 1px solid rgba(255, 255, 255, 0.4);
+    border: none;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.5);
+    margin: 1.8rem 0;
 }
-/* modeled after weather app
+
+.weather-details-row {
+    padding: 0 0.5rem; 
+    font-size: 1rem;
+    font-weight: 300;
+}
+
+#second-api-data h5 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    opacity: 0.95;
+    margin-bottom: 0.4rem;
+}
+
+#fact-display {
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 1.4;
+    opacity: 0.9;
+}

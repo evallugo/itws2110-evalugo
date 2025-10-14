@@ -3,35 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WebSystems Lab 3 - Weather & API App</title>
+    <title>Web Systems Lab 3</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div id="app-container" class="container-fluid d-flex justify-content-center align-items-center vh-100">
-        <div id="weather-widget" class="card shadow-lg p-4 custom-card">
+        <div id="weather-widget" class="card shadow-lg p-4 custom-card"> 
             <h1 id="city-name" class="display-4 fw-light">Loading...</h1>
             <p id="description" class="lead">Fetching weather data...</p>
 
-            <div class="row align-items-center mt-4">
+            <div class="row align-items-center temp-icon-row">
                 <div class="col-6">
-                    <p id="temperature" class="display-1 fw-bold mb-0">-</p>
+                    <p id="temperature">-</p> 
                 </div>
                 <div class="col-6 text-end">
                     <img id="weather-icon" src="" alt="Weather Icon" class="weather-icon-lg">
                 </div>
             </div>
-            
-            <hr class="my-4">
-
+            <hr>
+            <div class="row align-items-start weather-details-row">
+                <div class="col-6">
+                    <p id="wind-speed" class="detail-line">Wind: -</p>
+                </div>
+                <div class="col-6 text-end">
+                    <p id="humidity" class="detail-line">Humidity: -</p>
+                </div>
+            </div>
+            <hr>
             <div id="second-api-data">
-                <h5 class="mb-3">Today's Fact:</h5>
-                <p id="fact-display">Data from your second API will appear here...</p>
+                <h5 class="mb-3">Today's Joke:</h5>
+                <p id="fact-display">Data from second API will appear here...</p>
             </div>
         </div>
-
     </div>
-
-    <script src="script.js"></script>
+    <script src="javascript.js"></script>
 </body>
 </html>

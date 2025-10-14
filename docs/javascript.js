@@ -1,79 +1,60 @@
 const OPENWEATHER_API_KEY = "e5b777ef2c116a5f495f2d2f19e18256"; 
-const FINNHUB_API_KEY = "d3mpekpr01qmso34t6n0d3mpekpr01qmso34t6ng"; 
 const TROY_ID = "5140604";
+const JOKE_API_URL = "https://v2.jokeapi.dev/joke/Any?type=single";
+const OPENWEATHER_URL = `https://api.openweathermap.org/data/2.5/weather?q=Troy,US&units=imperial&appid=${OPENWEATHER_API_KEY}`;
 
-const STOCK_SYMBOL = "AAPL";
-const FINNHUB_QUOTE_URL = 
-  `https://finnhub.io/api/v1/quote?symbol=${STOCK_SYMBOL}&token=${FINNHUB_API_KEY}`;
+function fetchWeatherData() {
+  var weatherXhr = new XMLHttpRequest();
 
-const OPENWEATHER_URL = 
-  `https://api.openweathermap.org/data/2.5/weather?id=${TROY_ID}&units=imperial&appid=${OPENWEATHER_API_KEY}`;
-
-function fetchWeatherData() 
-{
-  var xhr = new XMLHttpRequest();
-
-  xhr.onreadystatechange = function() {
-      if (this.readyState == 4 && this.status == 200) 
-        {
+  weatherXhr.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
           var weatherData = JSON.parse(this.responseText); 
           updateWeatherDisplay(weatherData);
 
-        } else if (this.readyState == 4) {
+      } else if (this.readyState == 4) {
           console.error("Error fetching weather data. HTTP Status: " + this.status);
-          document.getElementById('description').textContent = "Could not fetch weather data.";
+          document.getElementById('description').textContent = "Error: Could not fetch weather data.";
+          document.getElementById('temperature').textContent = "-";
+          document.getElementById('city-name').textContent = "Unavailable";
+          fetchJoke(); 
       }
   };
   
-  xhr.open("GET", OPENWEATHER_URL, true); 
-  xhr.send();
+  weatherXhr.open("GET", OPENWEATHER_URL, true); 
+  weatherXhr.send();
 }
 
-function updateWeatherDisplay(data) 
-{
+function updateWeatherDisplay(data) {
   const temp = Math.round(data.main.temp);
   const description = data.weather[0].description;
   const city = data.name;
   const iconCode = data.weather[0].icon;
-
+  const windSpeed = data.wind.speed.toFixed(2);
+  const humidity = data.main.humidity;
   document.getElementById('city-name').textContent = city;
   document.getElementById('description').textContent = description;
   document.getElementById('temperature').textContent = `${temp}°F`;
-  document.getElementById('weather-icon').src = `http://openweathermap.org/img/wn/${iconCode}@4x.png`;
-  fetchSecondAPIData(); 
+  document.getElementById('weather-icon').src = `https://openweathermap.org/img/wn/${iconCode}@4x.png`;
+  document.getElementById('wind-speed').textContent = `Wind: ${windSpeed} mph`; 
+  document.getElementById('humidity').textContent = `Humidity: ${humidity}%`;
+  fetchJoke(); 
 }
 
-function fetchSecondAPIData() 
-{
-    var xhrFinnhub = new XMLHttpRequest();
-    
-    xhrFinnhub.onreadystatechange = function() 
-    {
-        if (this.readyState == 4 && this.status == 200) 
-          {
-            var stockData = JSON.parse(this.responseText);
-            const currentPrice = stockData.c;
-            const percentChange = stockData.dp;
-            const displayElement = document.getElementById('fact-display');
-            
-            if (currentPrice && percentChange) 
-            {
-                displayElement.innerHTML = 
-                    `${STOCK_SYMBOL} Stock Price: **$${currentPrice.toFixed(2)}** (<span style="color:${percentChange >= 0 ? 'lightgreen' : 'pink'};">${percentChange.toFixed(2)}%</span>)`;
-            } else 
-              {
-                displayElement.textContent = `Error: Could not retrieve quote for ${STOCK_SYMBOL}.`;
-              }
+function fetchJoke() {
+  var jokeXhr = new XMLHttpRequest();
+  const displayElement = document.getElementById('fact-display');
 
-        } else if (this.readyState == 4) 
-          {
-            console.error("Error fetching stock data. HTTP Status: " + this.status);
-            document.getElementById('fact-display').textContent = "Stock data unavailable.";
-          }
-    };
-    
-    xhrFinnhub.open("GET", FINNHUB_QUOTE_URL, true); 
-    xhrFinnhub.send();
+  jokeXhr.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        var jokeData = JSON.parse(this.responseText);
+        
+        displayElement.textContent = jokeData.joke || "Could not fetch a joke.";
+    } else if (this.readyState == 4) {
+        displayElement.textContent = "Could not fetch a joke at this time.";
+    }
+  };
+  
+  jokeXhr.open("GET", JOKE_API_URL, true);
+  jokeXhr.send();
 }
-
 document.addEventListener('DOMContentLoaded', fetchWeatherData);
