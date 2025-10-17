@@ -1,22 +1,14 @@
-/* script.js - lab 3
-   - uses OpenWeatherMap current weather endpoint
-   - uses JokeAPI (sv443) for jokes
-   - displays some response headers
+/* script.js - Lab 3
+   Weather + Joke app using OpenWeatherMap and JokeAPI
+   Author: YOUR NAME
 */
 
 /* ============ CONFIG ============ */
-/* The instructor provided API key; you may replace it with your own if you prefer.
-   WARNING: For real projects do not commit API keys to public repos. For this lab it's acceptable.
-*/
-const OPENWEATHER_API_KEY = "e5b777ef2c116a5f495f2d2f19e18256";
-
-/* Default location */
-const DEFAULT_CITY = "Troy,US"; // Troy, NY, United States
-
-/* Joke API base */
+const OPENWEATHER_API_KEY = "e5b777ef2c116a5f495f2d2f19e18256"; // Instructor-provided key
+const DEFAULT_CITY = "Troy,US"; // Default city (Troy, NY, USA)
 const JOKE_API_BASE = "https://v2.jokeapi.dev/joke/Any";
 
-/* ============ DOM ============ */
+/* ============ DOM REFERENCES ============ */
 const weatherDiv = document.getElementById("weather");
 const headersPre = document.getElementById("response-headers");
 const weatherLoading = document.getElementById("weather-loading");
@@ -30,18 +22,54 @@ const btnCity = document.getElementById("btn-city");
 const cityInput = document.getElementById("city-input");
 const btnJoke = document.getElementById("btn-joke");
 
-/* ============ Helpers ============ */
-function showLoading(el, show=true) {
+/* ============ HELPERS ============ */
+function showLoading(el, show = true) {
   el.style.display = show ? "block" : "none";
 }
+
 function formatTemp(t) {
-  // temperature rounded
   return Math.round(t) + "°F";
 }
 
-/* ============ Weather fetch ============ */
+function escapeHtml(s) {
+  if (s == null) return "";
+  return String(s)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
+
+/* ============ WEATHER FUNCTIONS ============ */
 async function fetchWeatherByCity(city = DEFAULT_CITY) {
-  const q = encodeURIComponent(city);
+  // Clean and normalize input
+  let normalized = city.trim();
+
+  // Handle inputs like "Boston, MA" → "Boston,US"
+  if (normalized.includes(",")) {
+    const parts = normalized.split(",").map(p => p.trim());
+    const cityName = parts[0];
+    let region = parts[1] ? parts[1].toUpperCase() : "";
+
+    const usStates = [
+      "AL","AK","AZ","AR","CA","CO","CT","DE","FL","GA","HI","ID","IL","IN","IA","KS",
+      "KY","LA","ME","MD","MA","MI","MN","MS","MO","MT","NE","NV","NH","NJ","NM","NY",
+      "NC","ND","OH","OK","OR","PA","RI","SC","SD","TN","TX","UT","VT","VA","WA","WV",
+      "WI","WY"
+    ];
+
+    if (usStates.includes(region)) {
+      region = "US";
+    }
+
+    normalized = `${cityName},${region}`;
+  } else {
+    // Default to US if no country given
+    normalized += ",US";
+  }
+
+  const q = encodeURIComponent(normalized);
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${q}&units=imperial&appid=${OPENWEATHER_API_KEY}`;
   return fetchWeatherUrl(url);
 }
@@ -58,12 +86,12 @@ async function fetchWeatherUrl(url) {
     headersPre.textContent = "";
 
     const resp = await fetch(url);
-    // show some headers (iterate)
+
+    // Display available response headers
     const headerList = [];
-    for (const pair of resp.headers.entries()) {
-      // collect a few headers — note that browsers sometimes restrict some headers for CORS/security
-      headerList.push(`${pair[0]}: ${pair[1]}`);
-      if (headerList.length >= 12) break;
+    for (const [key, val] of resp.headers.entries()) {
+      headerList.push(`${key}: ${val}`);
+      if (headerList.length >= 12) break; // show up to 12 headers
     }
     headersPre.textContent = headerList.join("\n");
 
@@ -92,14 +120,13 @@ function displayWeather(data) {
   const temp = data.main.temp;
   const feels = data.main.feels_like;
   const humidity = data.main.humidity;
-  const weatherDesc = (data.weather && data.weather[0] && data.weather[0].description) || "N/A";
-  const icon = (data.weather && data.weather[0] && data.weather[0].icon) ? data.weather[0].icon : null;
+  const weatherDesc = data.weather?.[0]?.description || "N/A";
+  const icon = data.weather?.[0]?.icon || null;
   const wind = data.wind ? `${data.wind.speed} mph` : "N/A";
 
-  let iconHtml = "";
-  if (icon) {
-    iconHtml = `<img alt="${escapeHtml(weatherDesc)}" src="https://openweathermap.org/img/wn/${icon}@2x.png" style="width:72px;height:72px;" />`;
-  }
+  const iconHtml = icon
+    ? `<img alt="${escapeHtml(weatherDesc)}" src="https://openweathermap.org/img/wn/${icon}@2x.png" style="width:72px;height:72px;" />`
+    : "";
 
   const html = `
     <div class="d-flex align-items-center gap-3">
@@ -118,13 +145,12 @@ function displayWeather(data) {
   weatherDiv.innerHTML = html;
 }
 
-/* ============ Joke fetch ============ */
+/* ============ JOKE FUNCTIONS ============ */
 async function fetchJoke() {
   try {
     showLoading(jokeLoading, true);
     jokeDiv.innerHTML = "";
 
-    // Build a safe-joke query: blacklist potentially offensive content
     const url = `${JOKE_API_BASE}?blacklistFlags=nsfw,religious,political,sexist,explicit`;
     const resp = await fetch(url);
 
@@ -136,7 +162,6 @@ async function fetchJoke() {
 
     const data = await resp.json();
 
-    // JokeAPI returns type 'single' or 'twopart'
     let html = "";
     if (data.type === "single" && data.joke) {
       html = `<div class="lead">${escapeHtml(data.joke)}</div>`;
@@ -146,9 +171,7 @@ async function fetchJoke() {
       html = `<div>Unexpected joke format. Raw response: <pre class="small">${escapeHtml(JSON.stringify(data))}</pre></div>`;
     }
 
-    // show category and id (helpful for README)
     html += `<div class="mt-3 small text-muted">Category: ${escapeHtml(data.category || "N/A")} • ID: ${escapeHtml(String(data.id || "N/A"))}</div>`;
-
     jokeDiv.innerHTML = html;
   } catch (err) {
     jokeDiv.innerHTML = `<div class="text-danger">Network error: ${escapeHtml(err.message)}</div>`;
@@ -157,19 +180,9 @@ async function fetchJoke() {
   }
 }
 
-/* ============ Utilities ============ */
-function escapeHtml(s) {
-  if (s == null) return "";
-  return String(s)
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&#039;");
-}
-
-/* ============ Event bindings ============ */
+/* ============ EVENT BINDINGS ============ */
 btnRefresh.addEventListener("click", () => fetchWeatherByCity(DEFAULT_CITY));
+
 btnCity.addEventListener("click", () => {
   const c = cityInput.value.trim();
   if (c.length === 0) {
@@ -178,6 +191,7 @@ btnCity.addEventListener("click", () => {
   }
   fetchWeatherByCity(c);
 });
+
 btnJoke.addEventListener("click", fetchJoke);
 
 btnGeolocate.addEventListener("click", () => {
@@ -185,6 +199,7 @@ btnGeolocate.addEventListener("click", () => {
     alert("Geolocation is not supported by your browser.");
     return;
   }
+
   showLoading(weatherLoading, true);
   navigator.geolocation.getCurrentPosition(
     (pos) => {
@@ -200,7 +215,7 @@ btnGeolocate.addEventListener("click", () => {
   );
 });
 
-/* ============ Initial load ============ */
+/* ============ INITIAL LOAD ============ */
 window.addEventListener("load", () => {
   fetchWeatherByCity(DEFAULT_CITY);
   fetchJoke();
