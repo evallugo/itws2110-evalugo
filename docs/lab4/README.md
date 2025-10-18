@@ -27,7 +27,18 @@ ChatGPT Prompts:
 
 
 #4
-    Remove the response header section from being visible to the user and give me all the updated code files. 
+    "Remove the response header section from being visible to the user and give me all the updated code files."
 
     Outcome: This did fix my code to make everything now run smoothly, however, it completely changed the appearance and styling of the website. This isn't an issue for the sake of this lab, however if I were trying to achieve a specific look, this is something that could be frustrating.
     
+
+#5 
+    "This code all works well. there is one final problem with this code, the refresh button works for the weather API, but doesn't refresh the jokes. Can you please fix this? Ensure that you don't change anything else about the functionality of this code."
+    
+    Outcome: Broke my code and is not showing either jokes or weather.
+
+
+#6 
+    "This didnt work, its not showing the weather or the jokes."
+
+    Outcome: Fixed my code, everything works as it should now!
