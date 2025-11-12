@@ -1,0 +1,25 @@
+{
+  "lectures":[
+  {"lectureNumber":"1", "lectureTitle":"Web Systems Development", "lectureDescription":"Syllabus/Introductions"},
+  {"lectureNumber":"2", "lectureTitle":"The Basics", "lectureDescription":"A refresher of content from Intro to ITWS and to prepare for Web Sys"},
+  {"lectureNumber":"3", "lectureTitle":"CSS", "lectureDescription":"Cascading Style Sheets basics"},
+  {"lectureNumber":"4", "lectureTitle":"CSS Part 2", "lectureDescription":"CSS more in depth/advanced"},
+  {"lectureNumber":"5", "lectureTitle":"Javascript", "lectureDescription":"JS introducion/use/syntax"},  
+  {"lectureNumber":"6", "lectureTitle":"AJAX and JSON", "lectureDescription":"AJAX and JSON introduction, use, syntax, and using them together"},
+  {"lectureNumber":"7", "lectureTitle":"APIs", "lectureDescription":"API definitions, use, and exploring rest"},
+  {"lectureNumber":"8", "lectureTitle":"Front End Optimizations", "lectureDescription":"Efficiency, minimizing, measuring performance"},
+  {"lectureNumber":"9", "lectureTitle":"PHP Functions & Object Classes", "lectureDescription":"Introduction to PHP, basics, and syntax"},
+  {"lectureNumber":"10", "lectureTitle":"PHP Interfaces, Abstract Classes, & Polymorephism", "lectureDescription":"Polymorphism, members, interfaces"},
+  {"lectureNumber":"11", "lectureTitle":"Authentication & Authorization", "lectureDescription":"Comparison, application, and salting"}
+],
+
+"labs":[
+  {"labNumber":"1", "labTitle":"Lab 1", "labDescription":"Team Online Portfolio: Each group member creates a portfolio to link to a webpage, showcasing experience"},
+  {"labNumber":"2", "labTitle":"Lab 2", "labDescription":"Constitution Website: Group collaborates to create a webpage hosting the constitution"},
+  {"labNumber":"3", "labTitle":"Lab 3", "labDescription":"OpenWeathermap API: JavaScript, AJAX, JSON, using APIs - create a webpage that http GETs data from openweather, and displays it on the page"},
+  {"labNumber":"4", "labTitle":"Lab 4", "labDescription":"Remake of Lab 3 with AI tools, only being allowed to use generated code and no written code."},
+  {"labNumber":"5", "labTitle":"Lab 5", "labDescription":"How Bloomberg Terminals and their data can be implemented into Team Projects"},
+  {"labNumber":"6", "labTitle":"Lab 6", "labDescription":"PHP calculator - utilizing PHP to make a working calculator given interface and starter code"},
+  {"labNumber":"7", "labTitle":"Lab 7", "labDescription":"Recreating LMS"}
+]
+}

@@ -1,0 +1,38 @@
+[
+  {
+    "name": "tostones",
+    "description": "puerto rican crispy and savory double fried plantains",
+    "category": "vegan",
+    "cuisine": "puerto rican",
+    "image": "./resources/img/tostones.jpg",
+    "ingredients": ["vegetable oil", " salt", " plantains"],
+    "price": "$5.00"
+  },
+  {
+    "name": "arroz con gandules",
+    "description": "yellow rice with pigeon peas cooked in a sofrito base",
+    "category": "vegan",
+    "cuisine": "puerto rican",
+    "image": "./resources/img/arroz.jpg",
+    "ingredients": ["rice", " pigeon peas", " oil", " sofrito"],
+    "price": "$15.00"
+  },
+  {
+    "name": "pasteles",
+    "description": "savory meat filling encased in a masa dough of starchy root vegetables like green bananas and yuca, steamed inside a banana leaf",
+    "category": "non-vegetarian",
+    "cuisine": "puerto rican",
+    "image": "./resources/img/pasteles.jpg",
+    "ingredients": ["chicken", " banana leaf", " yuca", " sofrito", " masa dough"],
+    "price": "$20.00"
+  },
+  {
+    "name": "chicken and cheese empanadas",
+    "description": "crunchy dough fried shell encasing savory chicken and cheese",
+    "category": "non-vegetarian",
+    "cuisine": "puerto rican",
+    "image": "./resources/img/empanadas.jpg",
+    "ingredients": ["chicken", " cheese", " empanada dough", " seasoning"],
+    "price": "$5.00"
+  }
+]

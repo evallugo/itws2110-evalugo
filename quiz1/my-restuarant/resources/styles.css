@@ -1,0 +1,57 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #fff8e6;
+  text-align: center;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  background-color: #d62828;
+  color: white;
+  padding: 20px;
+  margin: 0;
+}
+
+p {
+  color: black;
+  margin-top: 10px;
+}
+
+table {
+  width: 90%;
+  margin: 20px auto;
+  border-collapse: collapse;
+  background-color: white;
+  border: 3px solid #496dfc;
+}
+
+th {
+  background-color: #496dfc;
+  color: white;
+  padding: 10px;
+}
+
+td {
+  border: 1px solid #eee;
+  padding: 10px;
+  text-align: center;
+}
+
+img {
+  width: 150px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 2px solid #d62828;
+}
+
+tr:hover {
+  background-color: #fff3cd;
+}
+
+.price {
+  color: green;
+  font-weight: bold;
+}
