@@ -1,5 +1,6 @@
 web systems lab 6
 
+**GRANTED AN EXTENSION FOR THE SUBMISSION OF THIS LAB (11/7)**
 
 struggles:
 
